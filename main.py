@@ -9,7 +9,7 @@ import pygame
 import os
 recognizer = sr.recognizers
 engine = pyttsx3.init()
-newsapi = "27487455ad33474b98e3244bc052b44a"
+newsapi = "<YOUR_NEWS_API_KEY>"
 
 def speak_old(text):
     engine.say(text)
@@ -36,7 +36,7 @@ def speak(text):
     os.remove
 
 def aiProcess(command):
-    client = OpenAI(api_key="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")
+    client = OpenAI(api_key="<YOUR_API_KEY>")
     completion = client.chat.completions.create(
     model="gpt-4o-mini",
     messages=[
@@ -62,7 +62,7 @@ def processCommand(c):
         webbrowser.open(link)
 
     elif "news" in c.lower():
-        r = requests.get("https://newsapi.org/v2/top-headlines?country=in&apiKey=27487455ad33474b98e3244bc052b44a")
+        r = requests.get("https://newsapi.org/v2/top-headlines?country=in&apiKey=<YOUR_NEWS_API_KEY")
         if r.status_code == 200:
             # Parse the JSON response
             data = r.json()
